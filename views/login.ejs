@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ HYPERSPACE LOGIN ⚡</title>
+    
+    <!-- Quantum UI Framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Rajdhani:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- HyperFX Animation Engine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    
+    <!-- Neural Particle Network -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    
+    <style>
+        :root {
+            --quantum-blue: #00f7ff;
+            --cyber-purple: #ff00f7;
+            --neon-pink: #ff00aa;
+            --matrix-green: #00ff88;
+            --dark-void: #0a0a15;
+            --ultra-glow: 0 0 25px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: radial-gradient(circle at center, #000000, #0a0020);
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+        
+        /* === QUANTUM PARTICLE UNIVERSE === */
+        #quantum-universe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        /* === HYPERLOGIN CARD === */
+        .hyperlogin-card {
+            width: 450px;
+            background: rgba(10, 10, 35, 0.3);
+            border: 2px solid var(--quantum-blue);
+            border-radius: 20px;
+            box-shadow: 
+                0 0 50px rgba(0, 247, 255, 0.5),
+                inset 0 0 30px rgba(0, 247, 255, 0.2);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateX(5deg);
+            animation: float 8s infinite ease-in-out;
+            z-index: 10;
+            overflow: hidden;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) rotateX(5deg) rotateY(0deg); }
+            25% { transform: translate(-50%, -53%) rotateX(8deg) rotateY(3deg); }
+            50% { transform: translate(-50%, -50%) rotateX(5deg) rotateY(-3deg); }
+            75% { transform: translate(-50%, -52%) rotateX(8deg) rotateY(2deg); }
+        }
+        
+        .hyperlogin-card::before {
+            content: '';
+            position: absolute;
+            top: -200%;
+            left: -200%;
+            width: 500%;
+            height: 500%;
+            background: 
+                radial-gradient(circle, rgba(0, 247, 255, 0.1) 0%, transparent 70%),
+                linear-gradient(45deg, transparent 45%, rgba(255, 0, 247, 0.1) 50%, transparent 55%);
+            animation: shine 12s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(0deg) translate(-50%, -50%); }
+            100% { transform: rotate(360deg) translate(-50%, -50%); }
+        }
+        
+        /* === HEADER === */
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .login-header h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--quantum-blue), var(--cyber-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: var(--ultra-glow) rgba(0, 247, 255, 0.7);
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            animation: textGlow 3s infinite alternate;
+        }
+        
+        @keyframes textGlow {
+            0% { text-shadow: var(--ultra-glow) rgba(0, 247, 255, 0.7); }
+            50% { text-shadow: 0 0 40px rgba(255, 0, 247, 0.7); }
+            100% { text-shadow: var(--ultra-glow) rgba(0, 255, 170, 0.7); }
+        }
+        
+        .login-header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+        
+        /* === FORM INPUTS === */
+        .input-group {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .input-group label {
+            display: block;
+            color: var(--quantum-blue);
+            margin-bottom: 10px;
+            font-size: 1rem;
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.5s ease;
+            box-shadow: 
+                inset 0 0 15px rgba(0, 0, 0, 0.5),
+                0 0 10px rgba(0, 247, 255, 0.1);
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--cyber-purple);
+            box-shadow: 
+                inset 0 0 20px rgba(0, 247, 255, 0.2),
+                0 0 30px rgba(255, 0, 247, 0.5);
+            transform: translateY(-3px);
+        }
+        
+        /* === SUBMIT BUTTON === */
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--quantum-blue), var(--cyber-purple));
+            border: none;
+            border-radius: 8px;
+            color: black;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 0 30px rgba(0, 247, 255, 0.7),
+                0 0 60px rgba(255, 0, 247, 0.3);
+            margin-top: 20px;
+            z-index: 1;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 
+                0 0 50px rgba(0, 247, 255, 0.9),
+                0 0 80px rgba(255, 0, 247, 0.5);
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: linear-gradient(
+                to right,
+                transparent 20%,
+                rgba(255, 255, 255, 0.4) 50%,
+                transparent 80%
+            );
+            transform: rotate(45deg);
+            animation: btnShine 4s infinite linear;
+            z-index: -1;
+        }
+        
+        @keyframes btnShine {
+            0% { transform: rotate(45deg) translate(-30%, -30%); }
+            100% { transform: rotate(45deg) translate(30%, 30%); }
+        }
+        
+        /* === FOOTER LINK === */
+        .register-link {
+            text-align: center;
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .register-link a {
+            color: var(--matrix-green);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+        
+        .register-link a:hover {
+            color: var(--quantum-blue);
+            text-shadow: 0 0 20px rgba(0, 247, 255, 0.8);
+        }
+        
+        /* === ALERT MESSAGES === */
+        .success, .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: bold;
+            animation: fadeIn 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .success {
+            background: rgba(0, 255, 136, 0.15);
+            border: 1px solid var(--matrix-green);
+            color: var(--matrix-green);
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+        
+        .alert {
+            background: rgba(255, 0, 100, 0.15);
+            border: 1px solid #ff0064;
+            color: #ff0064;
+            text-shadow: 0 0 10px rgba(255, 0, 100, 0.5);
+        }
+        
+        /* === SCAN LINES === */
+        .scanline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--quantum-blue), transparent);
+            box-shadow: 0 0 15px var(--quantum-blue);
+            animation: scan 3s linear infinite;
+            opacity: 0.7;
+            z-index: 5;
+        }
+        
+        @keyframes scan {
+            0% { top: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        
+        /* === MATRIX RAIN EFFECT === */
+        .matrix-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+<body>
+    <!-- === QUANTUM UNIVERSE BACKGROUND (Three.js) === -->
+    <div id="quantum-universe"></div>
+    
+    <!-- === MATRIX RAIN EFFECT === -->
+    <canvas class="matrix-rain"></canvas>
+    
+    <!-- === SCANLINE EFFECT === -->
+    <div class="scanline"></div>
+    
+    <!-- === HYPERLOGIN CARD === -->
+    <div class="hyperlogin-card">
+        <div class="login-header">
+            <h2><i class="fas fa-user-astronaut"></i> HYPERSPACE ACCESS</h2>
+            <p>Authenticate to unlock the quantum network</p>
+        </div>
+        
+        <% if (success) { %>
+            <div class="success"><%= success %></div>
+        <% } %>
+        
+        <% if (error) { %>
+            <div class="alert"><%= error %></div>
+        <% } %>
+        
+        <form action="/login" method="POST">
+            <div class="input-group">
+                <label for="email"><i class="fas fa-envelope"></i> QUANTUM EMAIL</label>
+                <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="your@quantum.mail"
+                    oninvalid="this.setCustomValidity('Emailnya belum kamu isi loh!!')"
+                    oninput="this.setCustomValidity('')"
+                />
+            </div>
+            
+            <div class="input-group">
+                <label for="password"><i class="fas fa-lock"></i> NEURAL PASSWORD</label>
+                <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    required
+                    placeholder="••••••••"
+                    oninvalid="this.setCustomValidity('Passwordnya belum kamu isi loh!!')"
+                    oninput="this.setCustomValidity('')"
+                />
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-sign-in-alt"></i> INITIATE LOGIN
+            </button>
+        </form>
+        
+        <p class="register-link">
+            Belum punya akun? <a href="/register"><i class="fas fa-user-plus"></i> Daftar Sekarang</a>
+        </p>
+    </div>
+    
+    <!-- === QUANTUM PARTICLE UNIVERSE (Three.js) === -->
+    <script>
+        // === QUANTUM PARTICLE UNIVERSE ===
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({
+            canvas: document.getElementById('quantum-universe'),
+            alpha: true,
+            antialias: true
+        });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        
+        // Create particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particleCount = 5000;
+        
+        const posArray = new Float32Array(particleCount * 3);
+        for (let i = 0; i < particleCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
+        }
+        
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        
+        // Particle material
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.02,
+            color: 0x00f7ff,
+            transparent: true,
+            opacity: 0.8,
+            blending: THREE.AdditiveBlending
+        });
+        
+        // Create particle system
+        const particleSystem = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particleSystem);
+        
+        camera.position.z = 3;
+        
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            particleSystem.rotation.x += 0.0005;
+            particleSystem.rotation.y += 0.0005;
+            
+            renderer.render(scene, camera);
+        }
+        
+        animate();
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        // === MATRIX RAIN EFFECT ===
+        const matrixCanvas = document.querySelector('.matrix-rain');
+        const matrixCtx = matrixCanvas.getContext('2d');
+        
+        matrixCanvas.width = window.innerWidth;
+        matrixCanvas.height = window.innerHeight;
+        
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        
+        const alphabet = katakana + latin + nums;
+        
+        const fontSize = 16;
+        const columns = matrixCanvas.width / fontSize;
+        
+        const rainDrops = [];
+        for (let i = 0; i < columns; i++) {
+            rainDrops[i] = 1;
+        }
+        
+        const drawMatrix = () => {
+            matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+            
+            matrixCtx.fillStyle = '#00f7ff';
+            matrixCtx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                matrixCtx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if (rainDrops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+        
+        setInterval(drawMatrix, 30);
+        
+        // === FORM SUBMISSION ANIMATION ===
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> QUANTUM ENCRYPTION...';
+            submitBtn.disabled = true;
+            
+            // Simulate loading
+            setTimeout(() => {
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> ACCESS GRANTED!';
+                
+                // Submit the form after animation
+                setTimeout(() => {
+                    form.submit();
+                }, 800);
+            }, 2000);
+            
+            // Prevent default for demo (remove in production)
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
