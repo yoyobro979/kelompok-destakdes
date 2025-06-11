@@ -1,0 +1,90 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <%- include('partials/head') %>
+    <title><%= title %> | deveg</title>
+    <style>
+      .animal-card {
+        transition: all 0.3s ease;
+        border: none;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      }
+      .animal-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,229,255,0.1);
+      }
+      .animal-img {
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+      .animal-card:hover .animal-img {
+        transform: scale(1.05);
+      }
+      .badge-pet {
+        background: #00e5ff;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h1 class="display-4 text-center mb-5"><%= title %></h1>
+        
+        <div class="row g-4">
+          <% animals.forEach(animal => { %>
+            <div class="col-lg-4 col-md-6">
+              <div class="animal-card card h-100">
+                <img src="<%= animal.image %>" 
+                    class="animal-img card-img-top" 
+                    alt="<%= animal.name %>"
+                    onerror="this.src='/images/placeholder.jpg'">
+                <div class="card-body">
+                  <span class="badge badge-pet mb-2"><%= animal.category %></span>
+                  <h3 class="h5"><%= animal.name %></h3>
+                  <div class="mb-3">
+                    <% for (let i = 1; i <= 5; i++) { %>
+                      <i class="fas fa-star<%= i > animal.rating ? '-half-alt' : '' %> text-warning"></i>
+                    <% } %>
+                  </div>
+                  <ul class="list-unstyled">
+                    <% animal.features.forEach(feature => { %>
+                      <li><i class="fas fa-check-circle text-success me-2"></i> <%= feature %></li>
+                    <% }) %>
+                  </ul>
+                </div>
+                <div class="card-footer bg-white">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="h5 mb-0">Rp <%= animal.price.toLocaleString('id-ID') %></span>
+                    <button class="btn btn-primary btn-sm">
+                      <i class="fas fa-cart-plus me-1"></i> Pesan
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+
+    <%- include('partials/footer') %>
+
+    <!-- Animasi JS -->
+    <script>
+      document.querySelectorAll('.animal-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'translateY(-10px)';
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+    </script>
+  </body>
+  </html>

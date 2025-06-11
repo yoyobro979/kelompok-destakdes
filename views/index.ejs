@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevegaRoom | Jelajahi Koleksi Menakjubkan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --hewan: #fa0505;
+      --kendaraan: #2a17d5;
+      --buah: #e4f80b;
+      --dark: #2F3640;
+      --light: #F5F6FA;
+      --transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.2);
+      --gradient: linear-gradient(135deg, var(--hewan), var(--kendaraan), var(--buah));
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Background Partikel */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+    }
+
+    /* Konten Utama */
+    .main-content {
+      flex: 1;
+      padding: 4rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Pesan Sukses */
+    .success {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #174dd7;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateX(150%);
+      opacity: 0;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .success.show {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .success i {
+      font-size: 1.2rem;
+    }
+
+    /* Bagian Hero */
+    .hero {
+      text-align: center;
+      padding: 4rem 0;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4.5rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      color: #495057;
+      animation: fadeInUp 1s ease-out 0.2s forwards;
+      opacity: 0;
+    }
+
+    /* Grid Kategori */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+
+    .category-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transform: translateY(50px);
+      opacity: 0;
+    }
+
+    .category-card.animate {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .category-card i {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .category-card.animal i {
+      color: var(--hewan);
+    }
+
+    .category-card.vehicle i {
+      color: var(--kendaraan);
+    }
+
+    .category-card.fruit i {
+      color: var(--buah);
+    }
+
+    .category-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .category-card.animal h3 {
+      color: var(--hewan);
+    }
+
+    .category-card.vehicle h3 {
+      color: var(--kendaraan);
+    }
+
+    .category-card.fruit h3 {
+      color: var(--buah);
+    }
+
+    /* Bagian CTA */
+    .cta {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: white;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      margin: 4rem 0;
+      transform: scale(0.95);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .cta.animate {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+    }
+
+    .cta p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: #495057;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--gradient);
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn:hover::after {
+      opacity: 1;
+    }
+
+    /* Animasi */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* Responsif */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      .categories {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Partikel -->
+  <div id="particles-js"></div>
+
+  <!-- Include Navbar -->
+  <%- include('partials/navbar') %>
+
+  <!-- Pesan Sukses -->
+  <% if (success) { %>
+    <div class="success" id="success-message">
+      <i class="fas fa-check-circle"></i>
+      <span><%= success %></span>
+    </div>
+  <% } %>
+
+  <!-- Konten Utama -->
+  <div class="main-content">
+    <section class="hero">
+      <h1 class="floating">DevegaRoom</h1>
+      <p>Jelajahi koleksi menakjubkan hewan, kendaraan, dan buah-buahan kami</p>
+      <a href="#categories" class="btn">Lihat Koleksi</a>
+    </section>
+
+    <section id="categories" class="categories">
+      <div class="category-card animal" data-delay="0">
+        <i class="fas fa-paw"></i>
+        <h3>Hewan Menakjubkan</h3>
+        <p>Temukan berbagai hewan eksotis dan menakjubkan dari seluruh dunia</p>
+      </div>
+      <div class="category-card vehicle" data-delay="0.1">
+        <i class="fas fa-car"></i>
+        <h3>Kendaraan Keren</h3>
+        <p>Koleksi kendaraan tercepat dan tercanggih di dunia</p>
+      </div>
+      <div class="category-card fruit" data-delay="0.2">
+        <i class="fas fa-apple-alt"></i>
+        <h3>Buah Lezat</h3>
+        <p>Ragam buah-buahan segar dan penuh nutrisi</p>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Siap Menjelajahi DevegaRoom?</h2>
+      <p>Bergabunglah dengan komunitas kami untuk akses ke koleksi eksklusif</p>
+      <a href="/register" class="btn">Daftar Sekarang</a>
+    </section>
+  </div>
+
+  <!-- Include Footer -->
+  <%- include('partials/footer') %>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    // Inisialisasi particles.js
+    document.addEventListener('DOMContentLoaded', () => {
+      particlesJS('particles-js', {
+        particles: {
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: "#4361ee" },
+          shape: { type: "circle" },
+          opacity: { value: 0.5, random: true },
+          size: { value: 3, random: true },
+          line_linked: { enable: true, distance: 150, color: "#4361ee", opacity: 0.4, width: 1 },
+          move: { enable: true, speed: 3, direction: "none", random: true, straight: false, out_mode: "out" }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: { enable: true, mode: "repulse" },
+            onclick: { enable: true, mode: "push" },
+            resize: true
+          }
+        }
+      });
+
+      // Animasi pesan sukses
+      const successMsg = document.getElementById('success-message');
+      if (successMsg) {
+        setTimeout(() => {
+          successMsg.classList.add('show');
+          setTimeout(() => {
+            successMsg.classList.remove('show');
+            setTimeout(() => successMsg.remove(), 500);
+          }, 5000);
+        }, 300);
+      }
+
+      // Animasi kategori saat scroll
+      const animateOnScroll = () => {
+        const categoryCards = document.querySelectorAll('.category-card');
+        const ctaSection = document.querySelector('.cta');
+        
+        categoryCards.forEach(card => {
+          const cardPosition = card.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+          
+          if (cardPosition < screenPosition) {
+            const delay = card.dataset.delay || 0;
+            setTimeout(() => {
+              card.classList.add('animate');
+            }, delay * 1000);
+          }
+        });
+
+        const ctaPosition = ctaSection.getBoundingClientRect().top;
+        const ctaScreenPosition = window.innerHeight / 1.3;
+        
+        if (ctaPosition < ctaScreenPosition) {
+          ctaSection.classList.add('animate');
+        }
+      };
+
+      window.addEventListener('scroll', animateOnScroll);
+      animateOnScroll(); // Jalankan sekali saat load
+    });
+  </script>
+</body>
+</html>

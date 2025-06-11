@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> | GYMFLEX</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <style>
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <nav class="gradient-bg text-white shadow-lg">
+    <div class="container mx-auto px-6 py-3">
+      <div class="flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold">GYMFLEX</a>
+        <div class="flex space-x-4">
+          <% if (user) { %>
+            <a href="/users" class="px-3 py-2 rounded hover:bg-purple-700 transition">
+              <i class="fas fa-user mr-2"></i>Profile
+            </a>
+            <a href="/logout" class="px-3 py-2 rounded hover:bg-purple-700 transition">
+              <i class="fas fa-sign-out-alt mr-2"></i>Logout
+            </a>
+          <% } else { %>
+            <a href="/login" class="px-3 py-2 rounded hover:bg-purple-700 transition">
+              <i class="fas fa-sign-in-alt mr-2"></i>Login
+            </a>
+            <a href="/register" class="px-3 py-2 rounded hover:bg-purple-700 transition">
+              <i class="fas fa-user-plus mr-2"></i>Register
+            </a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>

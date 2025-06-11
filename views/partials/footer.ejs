@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>devegaroom - Premium Footer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #00e5ff;
+      --primary-dark: #00b8cc;
+      --dark: #0e0e10;
+      --darker: #0a0a0b;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .content {
+      flex: 1;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* ===== MODERN FOOTER ===== */
+    .meduro-footer {
+      background: linear-gradient(135deg, var(--darker), #1a1a1d);
+      color: var(--light);
+      padding: 3rem 0;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(0, 229, 255, 0.1);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo img {
+      width: 50px;
+      height: auto;
+      margin-right: 12px;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary), #fff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .footer-description {
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-heading {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-heading::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50%;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: var(--primary);
+      color: #000;
+      transform: translateY(-3px);
+    }
+
+    .contact-info {
+      margin-top: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      color: var(--gray);
+    }
+
+    .contact-item i {
+      margin-right: 10px;
+      color: var(--primary);
+      width: 20px;
+      text-align: center;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* Glow effect */
+    .footer-glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0, 229, 255, 0.1) 0%, transparent 70%);
+      z-index: 0;
+    }
+
+    .glow-1 {
+      top: -100px;
+      right: -100px;
+    }
+
+    .glow-2 {
+      bottom: -50px;
+      left: -50px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      
+      .footer-heading {
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Selamat datang di <span class="brand-highlight">devegaroom</span></h1>
+      <p class="hero-subtitle">Solusi Transportasi Spesial untuk Kebutuhan Unik Anda</p>
+      <div class="cta-buttons">
+        <a href="/hewan" class="cta-primary">
+          <i class="fas fa-paw"></i> Kendaraan Hewan
+        </a>
+        <a href="/buah" class="cta-secondary">
+          <i class="fas fa-apple-alt"></i> Angkutan Buah
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <h2 class="section-title">Mengapa Memilih devegaroom?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>Keamanan Terjamin</h3>
+        <p>Transportasi dengan sistem pengamanan mutakhir untuk hewan dan barang berharga Anda</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-snowflake"></i>
+        </div>
+        <h3>Temperatur Terkontrol</h3>
+        <p>Sistem pendingin canggih menjaga kesegaran produk selama perjalanan</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-map-marked-alt"></i>
+        </div>
+        <h3>Pelayanan Nasional</h3>
+        <p>Jangkauan luas ke seluruh kota besar di Indonesia</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <h2 class="section-title">Apa Kata Pelanggan Kami?</h2>
+    <div class="testimonial-slider">
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"Layanan pengiriman kucing saya sangat memuaskan! Sangat profesional dan penuh perhatian."</p>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Wijaya">
+            <div>
+              <h4>aaaa aisyah jamilah</h4>
+              <span>Pemilik Pet Shop</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"Buah-buahan saya sampai dalam kondisi segar seperti baru dipetik. Recommended!"</p>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Budi Santoso">
+            <div>
+              <h4>dontol geming</h4>
+              <span>Pemilik Kebun ranjau</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Siap Menggunakan Layanan Kami?</h2>
+      <p>Dapatkan penawaran khusus untuk pelanggan baru</p>
+      <a href="/register" class="cta-button">
+        Daftar Sekarang <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+</div>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    height: 500px;
+    background: url('https://images.unsplash.com/photo-1601758003122-53c40e686a19') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 3rem;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    max-width: 800px;
+    padding: 0 2rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .brand-highlight {
+    color: #00e5ff;
+    text-shadow: 0 0 10px rgba(0,229,255,0.7);
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .cta-primary, .cta-secondary {
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .cta-primary {
+    background: #00e5ff;
+    color: #000;
+  }
+  
+  .cta-primary:hover {
+    background: #00b8cc;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,229,255,0.3);
+  }
+  
+  .cta-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+  
+  .cta-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-3px);
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 4rem 0;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #00e5ff;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .feature-card {
+    background: #1a1a1d;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,229,255,0.1);
+  }
+  
+  .feature-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(0,229,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: #00e5ff;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-card p {
+    color: #aaa;
+    line-height: 1.6;
+  }
+  
+  /* Testimonials */
+  .testimonials-section {
+    padding: 4rem 0;
+    background: #1a1a1d;
+    margin: 3rem 0;
+  }
+  
+  .testimonial-slider {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .testimonial-slider::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+  
+  .testimonial-card {
+    min-width: 350px;
+    background: #0e0e10;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0,229,255,0.1);
+  }
+  
+  .testimonial-content p {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .testimonial-author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .testimonial-author h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .testimonial-author span {
+    color: #00e5ff;
+    font-size: 0.9rem;
+  }
+  
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, #00e5ff, #00b8cc);
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 12px;
+    margin-top: 3rem;
+  }
+  
+  .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #000;
+  }
+  
+  .cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: rgba(0,0,0,0.8);
+  }
+  
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #000;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background: #111;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.2rem;
+    }
+    
+    .cta-buttons {
+      flex-direction: column;
+    }
+    
+    .testimonial-card {
+      min-width: 280px;
+    }
+  }
+</style>
+
+  <footer class="meduro-footer">
+    <div class="footer-glow glow-1"></div>
+    <div class="footer-glow glow-2"></div>
+    
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          
+          <span class="logo-text">devegaroom</span>
+        </div>
+        <p class="footer-description">
+          Solusi transportasi modern untuk kebutuhan hewan, buah, dan kendaraan khusus.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="/hewan">Kendaraan Hewan</a></li>
+          <li><a href="/buah">Transportasi Buah</a></li>
+          <li><a href="/kendaraan">Kendaraan Khusus</a></li>
+          <li><a href="/about">Tentang Kami</a></li>
+          <li><a href="/contact">Kontak</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-heading">Contact Us</h3>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>JL.in aja dulu, di akhirat</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>031-68714</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>info@devegaroom.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <span>Senin-Jumat: 06.00 - 00.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2050 devegaroom. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

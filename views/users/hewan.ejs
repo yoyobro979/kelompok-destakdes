@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kendaraan Hewan | MeduroPride</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #00e5ff;
+      --primary-dark: #00b8cc;
+      --bg-dark: #0e0e10;
+      --card-bg: #1a1a1d;
+      --text-light: #f8f8f8;
+      --text-gray: #cccccc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, var(--primary), #fff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+
+    .search-filter {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .search-box, .filter-box {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .search-box input, .filter-box select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: var(--text-light);
+      font-size: 1rem;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 229, 255, 0.1);
+    }
+
+    .card-img {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover .card-img img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .card-content p {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .btn-detail {
+      background: var(--primary);
+      color: #000;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-detail:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-paw"></i> Kendaraan Hewan</h1>
+      <p>Temukan kendaraan khusus untuk hewan peliharaanmu</p>
+    </header>
+
+    <div class="search-filter">
+      <div class="search-box">
+        <input type="text" placeholder="Cari kendaraan...">
+      </div>
+      <div class="filter-box">
+        <select>
+          <option value="">Semua Kategori</option>
+          <option value="kucing">Untuk Kucing</option>
+          <option value="anjing">Untuk Anjing</option>
+          <option value="burung">Untuk Burung</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid-container">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="https://source.unsplash.com/random/300x200/?pet-carrier" alt="Pet Carrier">
+        </div>
+        <div class="card-content">
+          <h3>Pet Carrier Premium</h3>
+          <p>Tas carrier hewan dengan sirkulasi udara baik dan bahan nyaman untuk perjalanan jarak jauh.</p>
+          <div class="card-footer">
+            <span class="price">Rp 250.000</span>
+            <button class="btn-detail">Detail</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="https://source.unsplash.com/random/300x200/?dog-car" alt="Dog Car Seat">
+        </div>
+        <div class="card-content">
+          <h3>Car Seat Anjing</h3>
+          <p>Tempat duduk khusus anjing di mobil dengan pengaman dan bahan yang mudah dibersihkan.</p>
+          <div class="card-footer">
+            <span class="price">Rp 350.000</span>
+            <button class="btn-detail">Detail</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="https://source.unsplash.com/random/300x200/?pet-stroller" alt="Pet Stroller">
+        </div>
+        <div class="card-content">
+          <h3>Kereta Dorong Hewan</h3>
+          <p>Stroller untuk hewan peliharaan dengan roda kuat dan kanopi pelindung UV.</p>
+          <div class="card-footer">
+            <span class="price">Rp 450.000</span>
+            <button class="btn-detail">Detail</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="https://source.unsplash.com/random/300x200/?bird-cage" alt="Bird Travel Cage">
+        </div>
+        <div class="card-content">
+          <h3>Sangkar Burung Travel</h3>
+          <p>Sangkar portable untuk perjalanan dengan tempat makan/minum terintegrasi.</p>
+          <div class="card-footer">
+            <span class="price">Rp 180.000</span>
+            <button class="btn-detail">Detail</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Fungsi pencarian
+    document.querySelector('.search-box input').addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+      
+      cards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const desc = card.querySelector('p').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || desc.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Fungsi filter
+    document.querySelector('.filter-box select').addEventListener('change', function(e) {
+      const filterValue = e.target.value;
+      // Implementasi filter sesuai kebutuhan
+      console.log('Filter by:', filterValue);
+    });
+  </script>
+</body>
+</html>

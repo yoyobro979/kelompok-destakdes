@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <%- include('partials/head') %>
+  <title>Koleksi Buah | DevegaRoom</title>
+  <style>
+    :root {
+      --primary: #00e5ff;
+      --primary-dark: #00b8cc;
+      --primary-light: rgba(0, 229, 255, 0.1);
+      --buah: #FFD166;
+      --background: #0e0e10;
+      --surface: #1a1a1d;
+      --surface-light: #2a2a2d;
+      --text-primary: #f8f8f8;
+      --text-secondary: #cccccc;
+      --border-radius: 12px;
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      --box-shadow-hover: 0 8px 24px rgba(0, 229, 255, 0.3);
+    }
+
+    /* Hero Section dengan Animasi */
+    .fruit-hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                  url('/images/buah/hero-bg.jpg') center/cover;
+      height: 60vh;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fruit-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(0,229,255,0.1) 0%, transparent 70%);
+      animation: pulse 8s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.1; }
+      100% { transform: scale(1.2); opacity: 0.3; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    /* Kartu Buah dengan Efek 3D */
+    .fruit-card {
+      background-color: var(--surface);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      perspective: 1000px;
+      transform-style: preserve-3d;
+      border: 1px solid rgba(255, 209, 102, 0.1);
+    }
+
+    .fruit-card:hover {
+      transform: translateY(-10px) rotateX(5deg);
+      box-shadow: var(--box-shadow-hover);
+    }
+
+    .fruit-img-container {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .fruit-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .fruit-card:hover .fruit-img {
+      transform: scale(1.1) rotate(1deg);
+    }
+
+    /* Efek Glow pada Gambar */
+    .fruit-img-container::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, transparent 60%, rgba(255,209,102,0.2) 100%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .fruit-card:hover .fruit-img-container::after {
+      opacity: 1;
+    }
+
+    /* Badge Kategori */
+    .badge-buah {
+      background-color: var(--buah);
+      color: #000;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(255, 209, 102, 0.3);
+      transition: var(--transition);
+    }
+
+    .fruit-card:hover .badge-buah {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(255, 209, 102, 0.4);
+    }
+
+    /* Tombol Beli dengan Efek */
+    .btn-buah {
+      background-color: var(--buah);
+      color: #000;
+      font-weight: 600;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 30px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .btn-buah::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.6s;
+    }
+
+    .btn-buah:hover {
+      background-color: #ffc233;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 209, 102, 0.4);
+    }
+
+    .btn-buah:hover::before {
+      left: 100%;
+    }
+
+    /* Animasi Teks */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Efek Hover pada Rating */
+    .rating-stars i {
+      transition: var(--transition);
+    }
+
+    .rating-stars:hover i {
+      transform: scale(1.2);
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .fruit-hero {
+        height: 50vh;
+      }
+      
+      .fruit-img-container {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <section class="fruit-hero text-white">
+    <div class="hero-content container">
+      <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">Koleksi Buah Segar</h1>
+      <p class="lead mb-5">Temukan berbagai macam buah berkualitas tinggi dengan rasa yang memukau</p>
+      <div class="search-container mx-auto" style="max-width: 600px;">
+        <div class="input-group shadow-lg">
+          <input type="text" class="form-control bg-surface-light text-white border-0 py-3" 
+                 placeholder="Cari buah favorit Anda...">
+          <button class="btn btn-primary px-4" type="button">
+            <i class="fas fa-search me-2"></i> Cari
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center mb-5">
+        <h2 class="h3 mb-3 mb-md-0">Buah Pilihan Musim Ini</h2>
+        <div class="d-flex">
+          <select class="form-select bg-surface-light text-white border-0 me-3" style="width: 180px">
+            <option>Semua Kategori</option>
+            <option>Buah Lokal</option>
+            <option>Buah Impor</option>
+            <option>Buah Organik</option>
+          </select>
+          <select class="form-select bg-surface-light text-white border-0" style="width: 180px">
+            <option>Urutkan</option>
+            <option>Termurah</option>
+            <option>Termahal</option>
+            <option>Terpopuler</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <% fruits.forEach(fruit => { %>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="fruit-card h-100">
+              <div class="position-relative fruit-img-container">
+                <img src="<%= fruit.image %>" 
+                     class="fruit-img" 
+                     alt="<%= fruit.name %>"
+                     loading="lazy">
+                <span class="badge badge-buah category-tag"><%= fruit.category %></span>
+              </div>
+              <div class="p-4">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h3 class="h5 mb-0"><%= fruit.name %></h3>
+                  <small class="text-muted"><i class="fas fa-weight me-1"></i> <%= fruit.weight %>g</small>
+                </div>
+                <div class="rating-stars mb-3">
+                  <% for (let i = 1; i <= 5; i++) { %>
+                    <i class="fas fa-star<%= i > fruit.rating ? '-half-alt' : '' %>"></i>
+                  <% } %>
+                  <small class="text-muted ms-1">(<%= fruit.reviews %> ulasan)</small>
+                </div>
+                <p class="text-secondary mb-4"><%= fruit.description.substring(0, 100) %>...</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="h4 text-warning">Rp <%= fruit.price.toLocaleString('id-ID') %> <small class="text-muted">/kg</small></span>
+                  <button class="btn btn-buah">
+                    <i class="fas fa-cart-plus me-1"></i> Beli
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+
+      <div class="text-center mt-5">
+        <button class="btn btn-outline-primary px-5 py-3">
+          <i class="fas fa-redo me-2"></i> Muat Lebih Banyak
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+
+  <script>
+    // Animasi saat scroll dengan Intersection Observer
+    document.addEventListener('DOMContentLoaded', () => {
+      const fruitCards = document.querySelectorAll('.fruit-card');
+      
+      // Set initial state
+      fruitCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)';
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      fruitCards.forEach(card => {
+        observer.observe(card);
+      });
+
+      // Efek hover 3D pada kartu
+      fruitCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const xAxis = (window.innerWidth / 2 - e.pageX) / 15;
+          const yAxis = (window.innerHeight / 2 - e.pageY) / 15;
+          card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'translateY(-10px) rotateX(5deg)';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
